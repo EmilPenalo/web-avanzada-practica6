@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .jumbotron {
+            opacity: 1;
+            background-color: #dfe5e5;
+            color: #6F7373;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        .display-3 {
+            font-weight: 900;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+        .lead {
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+
+    <div th:replace="~{fragments/sidebar.html :: sidebar}"></div>
+
+    <div id="page-content-wrapper">
+        <div class="container mt-5">
+            <div class="jumbotron text-center">
+                <h1 class="display-3">Practica 2</h1>
+                <p class="lead">Marcos Blanco y Emil Peñaló</p>
+                <p class="lead">The app is listening on port: <span th:text="${serverPort}"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-tfudR/CswzAMFkYniBpbj9fSPo8z0gY3U5OatbGwpJfCJMvXHQ7wTpshMgTjF2hJ"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCf4x65JkEyjCk4MIT+8XMRV9bs0yLU6N5w4"
+        crossorigin="anonymous"></script>
+</body>
+</html>

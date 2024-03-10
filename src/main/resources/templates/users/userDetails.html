@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:if="${edit} == true">Edit User</title>
+    <title th:unless="${edit} == true">Create User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="pt-3 mb-3">
+            <h2 th:if="${edit} == true">Edit User</h2>
+            <h2 th:unless="${edit} == true">Create User</h2>
+        </div>
+
+        <p th:if="${error}" class="text-danger" th:text="${error}">Error</p>
+
+        <form class="card p-4" th:action="${edit} ? @{/users/edit} : @{/users/save}" method="post" th:object="${user}">
+            <div class="form-group">
+                <label class="sr-only" for="username">Username</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">@</div>
+                    </div>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" th:value="${edit} ? ${user.username} : ''" th:readonly="${edit}" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label th:if="${!edit}" class="sr-only" for="password">Password</label>
+                <label th:if="${edit}" class="sr-only" for="new_password">Password</label>
+                <div class="input-group mb-2">
+                    <input th:if="${!edit}" type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+
+                    <input th:if="${edit}" type="password" class="form-control" id="new_password" name="new_password" placeholder="(Optional) New Password">
+
+                    <div class="ml-2">
+                        <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()" aria-label="Toggle password visibility">
+                            <span id="passwordToggleIcon" class="bi bi-eye"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group card">
+                <div class="card-header">
+                    Roles
+                </div>
+                <div class="p-3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="userRole" name="roles" value="ROLE_USER" checked readonly onclick="return false;">
+                        <label class="form-check-label badge badge-primary" for="userRole" style="color: white;">User</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="adminRole" name="roles" value="ROLE_ADMIN" th:checked="${edit and user.isAdmin()}">
+                        <label class="form-check-label badge badge-success" for="adminRole">Admin</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="max-width: 120px;">Save</button>
+        </form>
+    </div>
+
+    <script th:inline="javascript">
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById([[ ${edit} ? 'new_password' : 'password']]);
+            const passwordToggleIcon = document.getElementById('passwordToggleIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordToggleIcon.classList.remove('bi-eye');
+                passwordToggleIcon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordToggleIcon.classList.remove('bi-eye-slash');
+                passwordToggleIcon.classList.add('bi-eye');
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+            integrity="sha384-tfudR/CswzAMFkYniBpbj9fSPo8z0gY3U5OatbGwpJfCJMvXHQ7wTpshMgTjF2hJ"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCf4x65JkEyjCk4MIT+8XMRV9bs0yLU6N5w4"
+            crossorigin="anonymous"></script>
+</body>
+</html>

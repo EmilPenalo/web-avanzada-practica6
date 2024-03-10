@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title th:if="${edit} == true">Edit Project</title>
+    <title th:unless="${edit} == true">Create Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="pt-3 mb-3">
+        <div class="pt-3 mb-3">
+            <h2 th:if="${edit} == true">Edit Project</h2>
+            <h2 th:unless="${edit} == true">Create Project</h2>
+        </div>
+    </div>
+
+    <p th:if="${error}" class="text-danger" th:text="${error}">Error</p>
+
+    <form class="card p-4" th:action="${edit} ? @{/projects/edit} : @{/projects/save}" method="post" th:object="${project}">
+    <input th:if="${forUser != null}" type="hidden" id="forUser" name="forUser" th:value="${forUser}">
+    <input type="hidden" id="id" name="id" th:value="${edit} ? ${project.id} : ''">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Project name" th:value="${edit} ? ${project.name} : ''" required>
+        </div>
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text" th:text="'http://localhost:8080/access/' + (${edit} ? ${project.id} : '{id}') + '/'"></span>
+                <input type="text" class="form-control" id="path" name="path" placeholder="path" th:value="${edit} ? ${project.path} : ''" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="max-width: 120px;">Save</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-tfudR/CswzAMFkYniBpbj9fSPo8z0gY3U5OatbGwpJfCJMvXHQ7wTpshMgTjF2hJ"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCf4x65JkEyjCk4MIT+8XMRV9bs0yLU6N5w4"
+        crossorigin="anonymous"></script>
+</body>
+</html>
