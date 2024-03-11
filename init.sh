@@ -15,3 +15,5 @@ sudo cp ~/balanceadores-java-haproxy/configuracion-haproxy/ubuntu/haproxy.cfg.si
 
 # Reiniciando el servicio de HAProxy
 sudo service haproxy stop && sudo service haproxy start
+
+sudo apt install docker-compose
