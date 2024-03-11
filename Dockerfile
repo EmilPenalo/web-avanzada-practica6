@@ -5,7 +5,7 @@ RUN gradle build --no-daemon --exclude-task test
 
 FROM eclipse-temurin:17-alpine
 
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/application.jar
+COPY --from=build /home/gradle/src/build/libs/practica-6-0.0.1-SNAPSHOT.jar /app/application.jar
 
 ENV DB_NAME=mocking
 ENV DB_USER='root'
