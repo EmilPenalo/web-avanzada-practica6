@@ -16,4 +16,12 @@ sudo cp practica6/haproxy.cfg.p6 /etc/haproxy/haproxy.cfg
 # Reiniciando el servicio de HAProxy
 sudo service haproxy stop && sudo service haproxy start
 
+# Instalando docker
 sudo apt install docker-compose
+
+# Instalando certificados SSL
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot
