@@ -12,7 +12,6 @@ import webavanzada.pucmm.practica6.repositories.UserRepository;
 
 import java.util.Arrays;
 
-@EnableSpringHttpSession
 @SpringBootApplication
 public class Practica6Application {
 
