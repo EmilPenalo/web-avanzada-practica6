@@ -11,7 +11,9 @@ if [ ! -e "/etc/haproxy/haproxy.cfg.original" ]; then
 fi
 
 # Copiando el archivo de configuración de HAProxy.
-sudo cp ~/balanceadores-java-haproxy/configuracion-haproxy/ubuntu/haproxy.cfg.simple /etc/haproxy/haproxy.cfg
+sudo cp practica6/haproxy.cfg.p6 /etc/haproxy/haproxy.cfg
 
 # Reiniciando el servicio de HAProxy
 sudo service haproxy stop && sudo service haproxy start
+
+sudo apt install docker-compose
