@@ -15,13 +15,3 @@ sudo cp ~/balanceadores-java-haproxy/configuracion-haproxy/ubuntu/haproxy.cfg.si
 
 # Reiniciando el servicio de HAProxy
 sudo service haproxy stop && sudo service haproxy start
-
-# Instalando docker
-if ! command -v docker &> /dev/null; then
-    echo "Installing Docker..."
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh get-docker.sh
-    sudo usermod -aG docker $USER
-    echo "Docker installed successfully. Please log out and log back in to apply user permissions."
-    exit
-fi

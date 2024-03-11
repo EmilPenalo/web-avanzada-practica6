@@ -4,11 +4,11 @@ services:
   web-1:
     build: .
     ports:
-      - "8080:8080"
+      - "7000:7000"
     env_file:
       - .env
     environment:
-      - PORT_APP=8080
+      - PORT_APP=7000
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
@@ -21,11 +21,11 @@ services:
   web-2:
     build: .
     ports:
-      - "8081:8081"
+      - "7001:7001"
     env_file:
       - .env
     environment:
-      - PORT_APP=8081
+      - PORT_APP=7001
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
@@ -38,11 +38,11 @@ services:
   web-3:
     build: .
     ports:
-      - "8082:8082"
+      - "7002:7002"
     env_file:
       - .env
     environment:
-      - PORT_APP=8082
+      - PORT_APP=7002
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
