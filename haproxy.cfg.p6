@@ -44,6 +44,6 @@ bind *:80
 	stats realm HAProxy\ Statistics
 	stats auth cda:cda
 	balance roundrobin
-	server app-01 localhost:8080 check
-	server app-02 localhost:8081 check
-	server app-03 localhost:8082 check
+	server app-01 localhost:7000 check
+	server app-02 localhost:7001 check
+	server app-03 localhost:7002 check
