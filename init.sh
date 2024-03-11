@@ -17,13 +17,14 @@ sudo cp practica6/haproxy.cfg.p6 /etc/haproxy/haproxy.cfg
 sudo apt install docker-compose
 
 # Instalando certificados SSL
+sudo apt-get remove certbot
 sudo apt-get update
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install certbot
 
-sudo certbot certonly --standalone -d practica6.turnos.do -d www.practica6.turnos.do
+sudo certbot certonly --standalone -d practica6.turnos.do -v
 
 sudo mkdir -p /etc/haproxy/certs
 DOMAIN='practica6.turnos.do'
