@@ -25,3 +25,10 @@ sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install certbot
+
+sudo certbot certonly --standalone -d practica6.turnos.do -d www.practica6.turnos.do
+
+sudo mkdir -p /etc/haproxy/certs
+DOMAIN='practica6.turnos.do'
+sudo -E bash -c 'cat /etc/letsencrypt/live/$DOMAIN/fullchain.pem /etc/letsencrypt/live/$DOMAIN/privkey.pem >` /etc/haproxy/certs/$DOMAIN.pem'
+sudo chmod -R go-rwx /etc/haproxy/certs
