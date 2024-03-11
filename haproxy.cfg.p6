@@ -36,17 +36,13 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-listen stats
-  bind :6080
-  mode http
-  stats enable
-  stats realm Haproxy\ Statistics
-  stats uri /stats
-  stats auth cda:cda
-
 listen aplicacion_web
 bind *:80
 	mode http
+    stats enable
+    stats realm Haproxy\ Statistics
+    stats uri /stats
+    stats auth cda:cda
 	balance roundrobin
 	server app-01 localhost:7000 check
 	server app-02 localhost:7001 check
