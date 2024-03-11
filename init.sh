@@ -13,9 +13,6 @@ fi
 # Copiando el archivo de configuración de HAProxy.
 sudo cp practica6/haproxy.cfg.p6 /etc/haproxy/haproxy.cfg
 
-# Reiniciando el servicio de HAProxy
-sudo service haproxy stop && sudo service haproxy start
-
 # Instalando docker
 sudo apt install docker-compose
 
@@ -32,3 +29,6 @@ sudo mkdir -p /etc/haproxy/certs
 DOMAIN='practica6.turnos.do'
 sudo -E bash -c 'cat /etc/letsencrypt/live/$DOMAIN/fullchain.pem /etc/letsencrypt/live/$DOMAIN/privkey.pem >` /etc/haproxy/certs/$DOMAIN.pem'
 sudo chmod -R go-rwx /etc/haproxy/certs
+
+# Reiniciando el servicio de HAProxy
+sudo service haproxy stop && sudo service haproxy start
