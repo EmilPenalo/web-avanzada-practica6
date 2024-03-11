@@ -43,6 +43,9 @@ dependencies {
 
 	// JSON
 	implementation 'org.json:json:20240205'
+
+	implementation 'org.springframework.session:spring-session-core'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 jar {
