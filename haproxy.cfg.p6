@@ -45,14 +45,14 @@ bind *:6080
     stats uri /stats
     stats auth cda:cda
 
+backend origin_backend_http
+	balance roundrobin
+	server app-01 localhost:7000 check
+	server app-02 localhost:7001 check
+	server app-03 localhost:7002 check
+
 frontend http_lb_origin
 bind *:80
     mode http
     reqadd X-Forwarded-Proto:\ http
     origin_backend_http
-
-backend origin_backend_http
-	roundrobin
-	server app-01 localhost:7000 check
-	server app-02 localhost:7001 check
-	server app-03 localhost:7002 check
