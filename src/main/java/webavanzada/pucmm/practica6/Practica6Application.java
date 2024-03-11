@@ -5,12 +5,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
 import webavanzada.pucmm.practica6.entities.Role;
 import webavanzada.pucmm.practica6.entities.User;
 import webavanzada.pucmm.practica6.repositories.UserRepository;
 
 import java.util.Arrays;
 
+@EnableSpringHttpSession
 @SpringBootApplication
 public class Practica6Application {
 
