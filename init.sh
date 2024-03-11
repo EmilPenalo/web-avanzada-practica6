@@ -11,7 +11,7 @@ if [ ! -e "/etc/haproxy/haproxy.cfg.original" ]; then
 fi
 
 # Copiando el archivo de configuración de HAProxy.
-sudo cp ~/haproxy.cfg.p6 /etc/haproxy/haproxy.cfg
+sudo cp haproxy.cfg.p6 /etc/haproxy/haproxy.cfg
 
 # Reiniciando el servicio de HAProxy
 sudo service haproxy stop && sudo service haproxy start
