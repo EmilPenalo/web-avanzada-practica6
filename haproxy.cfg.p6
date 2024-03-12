@@ -39,9 +39,9 @@ defaults
 backend web_servers
     mode http
 	balance roundrobin
-	server app-01 localhost:7000 check ssl verify none
-	server app-02 localhost:7001 check ssl verify none
-	server app-03 localhost:7002 check ssl verify none
+	server app-01 localhost:7000 check
+	server app-02 localhost:7001 check
+	server app-03 localhost:7002 check
 
 frontend site
     mode http
