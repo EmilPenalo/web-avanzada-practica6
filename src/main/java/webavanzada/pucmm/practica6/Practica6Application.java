@@ -17,6 +17,7 @@ import webavanzada.pucmm.practica6.repositories.UserRepository;
 import java.util.Arrays;
 
 @EnableRedisWebSession
+@EnableRedisHttpSession
 @SpringBootApplication
 public class Practica6Application {
 
