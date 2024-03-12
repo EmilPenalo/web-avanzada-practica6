@@ -9,6 +9,7 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisIndexedHttpSession;
 import org.springframework.session.data.redis.config.annotation.web.server.EnableRedisWebSession;
 import webavanzada.pucmm.practica6.entities.Role;
 import webavanzada.pucmm.practica6.entities.User;
@@ -17,7 +18,7 @@ import webavanzada.pucmm.practica6.repositories.UserRepository;
 import java.util.Arrays;
 
 @EnableRedisWebSession
-@EnableRedisHttpSession
+@EnableRedisIndexedHttpSession
 @SpringBootApplication
 public class Practica6Application {
 
