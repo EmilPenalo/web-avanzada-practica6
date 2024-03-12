@@ -37,7 +37,7 @@ defaults
 	errorfile 504 /etc/haproxy/errors/504.http
 
 backend web_servers
-    mode tcp
+    mode http
 	balance roundrobin
 	server app-01 localhost:7000 check
 	server app-02 localhost:7001 check
@@ -46,7 +46,7 @@ backend web_servers
 frontend site
 bind *:80
 bind *:443 ssl crt /etc/haproxy/certs/emilmarcos.turnos.do.pem
-    mode tcp
+    mode http
     stats enable
     stats hide-version
     stats realm Haproxy\ Statistics
