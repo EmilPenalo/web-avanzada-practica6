@@ -30,7 +30,7 @@ sudo mkdir -p /etc/haproxy/certs
 DOMAIN='emilmarcos.turnos.do'
 sudo -E bash -c "cat /etc/letsencrypt/live/$DOMAIN/fullchain.pem /etc/letsencrypt/live/$DOMAIN/privkey.pem >/etc/haproxy/certs/$DOMAIN.pem"
 
-sudo ls -l /etc/haproxy/certs
+cat /etc/ssl/certs/*.pem > /etc/ssl/certs/ca.pem
 
 sudo chmod -R go-rwx /etc/haproxy/certs
 
