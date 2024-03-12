@@ -28,7 +28,10 @@ sudo certbot certonly --standalone -d emilmarcos.turnos.do -v
 
 sudo mkdir -p /etc/haproxy/certs
 DOMAIN='emilmarcos.turnos.do'
-sudo -E bash -c 'cat /etc/letsencrypt/live/$DOMAIN/fullchain.pem /etc/letsencrypt/live/$DOMAIN/privkey.pem >` /etc/haproxy/certs/$DOMAIN.pem'
+sudo -E bash -c "cat /etc/letsencrypt/live/$DOMAIN/fullchain.pem /etc/letsencrypt/live/$DOMAIN/privkey.pem >/etc/haproxy/certs/$DOMAIN.pem"
+
+sudo ls -l /etc/haproxy/certs
+
 sudo chmod -R go-rwx /etc/haproxy/certs
 
 # Reiniciando el servicio de HAProxy
