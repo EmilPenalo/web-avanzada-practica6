@@ -5,8 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import webavanzada.pucmm.practica6.entities.Role;
 import webavanzada.pucmm.practica6.entities.User;
 import webavanzada.pucmm.practica6.repositories.UserRepository;
@@ -14,7 +16,7 @@ import webavanzada.pucmm.practica6.repositories.UserRepository;
 import java.util.Arrays;
 
 
-@RedisHash
+@EnableRedisHttpSession
 @SpringBootApplication
 public class Practica6Application {
 
