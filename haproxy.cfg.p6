@@ -46,7 +46,7 @@ backend web_servers
 frontend site
     mode http
     bind *:80
-    bind *:443 ssl crt /etc/haproxy/certs/emilmarcos.turnos.do.pem
+    bind *:443 ssl crt /etc/haproxy/certs/emilmarcos2.turnos.do.pem
     stats enable
     stats realm Haproxy\ Statistics
     stats uri /stats

@@ -24,10 +24,10 @@ sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install certbot
 
-sudo certbot certonly --standalone -d emilmarcos.turnos.do -v
+sudo certbot certonly --standalone -d emilmarcos2.turnos.do -v
 
 sudo mkdir -p /etc/haproxy/certs
-DOMAIN='emilmarcos.turnos.do'
+DOMAIN='emilmarcos2.turnos.do'
 sudo -E bash -c "cat /etc/letsencrypt/live/$DOMAIN/fullchain.pem /etc/letsencrypt/live/$DOMAIN/privkey.pem >/etc/haproxy/certs/$DOMAIN.pem"
 
 cat /etc/ssl/certs/*.pem > /etc/ssl/certs/ca.pem
