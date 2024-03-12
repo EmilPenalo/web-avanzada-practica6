@@ -36,14 +36,14 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-# backend web_servers
-#     mode http
-# 	balance roundrobin
-# 	server app-01 localhost:7000 check
-# 	server app-02 localhost:7001 check
-# 	server app-03 localhost:7002 check
+backend web_servers
+    mode http
+	balance roundrobin
+	server app-01 localhost:7000 check
+	server app-02 localhost:7001 check
+	server app-03 localhost:7002 check
 
-listen site
+frontend site
     mode http
     bind *:80
     bind *:443 ssl crt /etc/haproxy/certs/emilmarcos.turnos.do.pem
@@ -52,8 +52,4 @@ listen site
     stats uri /stats
     stats auth cda:cda
     http-request redirect scheme https unless { ssl_fc }
-    balance roundrobin
-    server app-01 localhost:7000 check
-    server app-02 localhost:7001 check
-    server app-03 localhost:7002 check
-#     default_backend web_servers
+    default_backend web_servers
