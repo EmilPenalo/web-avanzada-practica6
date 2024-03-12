@@ -36,8 +36,8 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-listen stats
-bind *:6080
+frontend stats
+bind *:9000
     mode http
     stats enable
     stats hide-version
