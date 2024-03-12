@@ -43,7 +43,7 @@ defaults
 # 	server app-02 localhost:7001 check
 # 	server app-03 localhost:7002 check
 
-frontend site
+listen site
     mode http
     bind *:80
     bind *:443 ssl crt /etc/haproxy/certs/emilmarcos.turnos.do.pem
