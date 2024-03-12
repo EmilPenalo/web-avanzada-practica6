@@ -38,12 +38,14 @@ defaults
 
 backend web_servers
 	balance roundrobin
-	server app-01 localhost:7000 check
-	server app-02 localhost:7001 check
-	server app-03 localhost:7002 check
+	server app-01 localhost:7000 check ssl
+	server app-02 localhost:7001 check ssl
+	server app-03 localhost:7002 check ssl
 
 frontend site
 bind *:80
+bind *:443 ssl crt /etc/haproxy/certs/emilmarcos.turnos.do.pem
+    http-request redirect scheme https unless { ssl_fc }
     mode http
     stats enable
     stats hide-version
