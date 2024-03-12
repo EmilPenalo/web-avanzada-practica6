@@ -45,11 +45,11 @@ backend web_servers
 frontend site
 bind *:80
 bind *:443 ssl crt /etc/haproxy/certs/emilmarcos.turnos.do.pem
-    http-request redirect scheme https unless { ssl_fc }
     mode http
     stats enable
     stats hide-version
     stats realm Haproxy\ Statistics
     stats uri /stats
     stats auth cda:cda
+    http-request redirect scheme https unless { ssl_fc }
     default_backend web_servers
