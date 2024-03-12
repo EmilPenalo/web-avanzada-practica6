@@ -38,9 +38,9 @@ defaults
 
 backend web_servers
 	balance roundrobin
-	server app-01 localhost:7000 check ssl
-	server app-02 localhost:7001 check ssl
-	server app-03 localhost:7002 check ssl
+	server app-01 localhost:7000 check ssl verify none
+	server app-02 localhost:7001 check ssl verify none
+	server app-03 localhost:7002 check ssl verify none
 
 frontend site
 bind *:80
