@@ -36,22 +36,24 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-backend origin_backend_http
-	balance roundrobin
-	server app-01 localhost:7000 check
-	server app-02 localhost:7001 check
-	server app-03 localhost:7002 check
-
-frontend http_lb_origin
-bind *:80
+listen stats
+bind *:6080
     mode http
     stats enable
     stats hide-version
     stats realm Haproxy\ Statistics
     stats uri /stats
     stats auth cda:cda
-    reqadd X-Forwarded-Proto:\ http
-    origin_backend_http
+
+backend web_servers
+	balance roundrobin
+	server app-01 localhost:7000 check
+	server app-02 localhost:7001 check
+	server app-03 localhost:7002 check
+
+frontend site
+bind *:80
+    default_backend web_servers
 
 # listen aplicacion_web
 # bind *:80
