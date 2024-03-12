@@ -22,7 +22,7 @@ global
 
 defaults
 	log	global
-	mode	tcp
+	mode	http
 	option	httplog
 	option	dontlognull
         timeout connect 5000
@@ -38,7 +38,7 @@ defaults
 
 backend web_servers
 	balance roundrobin
-	server app-01 localhost:7000 check ssl verify none
+	server app-01 localhost:7000 check ssl
 	server app-02 localhost:7001 check ssl verify none
 	server app-03 localhost:7002 check ssl ca-file /etc/ssl/certs/ca.pem
 
@@ -46,6 +46,7 @@ frontend site
 bind *:80
 bind *:443 ssl crt /etc/haproxy/certs/emilmarcos.turnos.do.pem
     http-request redirect scheme https unless { ssl_fc }
+    mode http
     stats enable
     stats hide-version
     stats realm Haproxy\ Statistics
