@@ -79,5 +79,13 @@ services:
     depends_on:
       - database
 
+  redis:
+    image: "redis:alpine"
+    hostname: $REDIS_HOST
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    networks:
+      - red-app
+
 networks:
   red-app:

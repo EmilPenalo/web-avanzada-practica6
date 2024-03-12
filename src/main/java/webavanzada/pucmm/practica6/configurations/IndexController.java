@@ -14,17 +14,11 @@ public class IndexController {
     @Value("${server.port}")
     private String serverPort;
 
-    private final RedisTemplate<String, Integer> redisTemplate;
-
-    public IndexController(RedisTemplate<String, Integer> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
-
     @GetMapping("/")
     public String index(Model model, HttpSession session) {
         model.addAttribute("serverPort", serverPort);
 
-        Integer counter = redisTemplate.opsForValue().get("counter");
+        Integer counter = (Integer) session.getAttribute("counter");
 
         if (counter == null) {
             counter = 0;
