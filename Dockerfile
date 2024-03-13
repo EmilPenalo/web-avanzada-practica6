@@ -18,4 +18,4 @@ ENV PORT_APP=8080
 EXPOSE ${PORT_APP}
 
 # ENTRYPOINT ["java",  "-Dserver.port=${PORT_APP}", "-Dspring.datasource.username=${DB_USER}", "-Dspring.datasource.password=${DB_PASSWORD}", "-Djava.net.preferIPv4Stack=true", "-jar", "/app/application.jar"]
-ENTRYPOINT ["java", "-Dserver.port=${PORT_APP}", "-Dspring.datasource.username=${DB_USER}", "-Dspring.datasource.password=${DB_PASSWORD}", "-Dspring.redis.host=${REDIS_HOST}", "-Dspring.redis.port=${REDIS_PORT}", "-Djava.net.preferIPv4Stack=true", "-jar", "/app/application.jar"]
+ENTRYPOINT ["java", "-Dserver.port=${PORT_APP}", "-Dspring.datasource.username=${DB_USER}", "-Dspring.datasource.password=${DB_PASSWORD}", "-Dspring.data.redis.host=${REDIS_HOST}", "-Dspring.data.redis.port=${REDIS_PORT}", "-Djava.net.preferIPv4Stack=true", "-jar", "/app/application.jar"]
