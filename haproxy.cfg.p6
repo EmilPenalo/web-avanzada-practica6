@@ -54,5 +54,3 @@ frontend site
     stats auth cda:cda
     http-request redirect scheme https unless { ssl_fc }
     default_backend web_servers
-    stick-table type string len 32 size 10k expire 30m
-    stick store-request cookie(JSESSIONID)
